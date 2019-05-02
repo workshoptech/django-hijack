@@ -41,6 +41,8 @@ def _render_hijack_notification(request, context=None, template_name=None):
 
             ans = render_to_string(template_name, context, RequestContext(request))
         else:
+            if context is not None and not isinstance(context, dict):
+                context = context.flatten()
             ans = render_to_string(template_name, context, request=request)
     return mark_safe(ans)
 
