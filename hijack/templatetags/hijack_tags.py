@@ -55,7 +55,9 @@ def can_hijack(hijacker, hijacked):
 
 @register.filter
 def is_hijacked(request):
-    return request.session.get("is_hijacked_user", False)
+    if request is not None:
+        return request.session.get("is_hijacked_user", False)
+    return False
 
 
 try:
