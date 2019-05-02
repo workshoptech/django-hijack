@@ -21,12 +21,12 @@ from django_nose import NoseTestSuiteRunner
 
 def runtests(*test_args):
     import django
+
     if django.VERSION >= (1, 7):
         django.setup()
-    failures = NoseTestSuiteRunner(verbosity=2,
-                                      interactive=True).run_tests(test_args)
+    failures = NoseTestSuiteRunner(verbosity=2, interactive=True).run_tests(test_args)
     sys.exit(failures)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     runtests(*sys.argv[1:])
